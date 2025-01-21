@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Générateur d'idées de design</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f9;
+        }
+        .container {
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .idea {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #555;
+        }
+    </style>
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-XXXXXXX",  // Replace 'XXXXXXX' with your AdSense Publisher ID
+            enable_page_level_ads: true
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Générateur d'idées de design</h1>
+        <p>Cliquez sur le bouton ci-dessous pour générer une nouvelle idée de design.</p>
+        <button onclick="generateIdea()">Générer une idée</button>
+        <div class="idea" id="idea"></div>
+    </div>
+
+    <script>
+        const ideas = [
+            "Créer une affiche minimaliste inspirée par le mouvement Bauhaus.",
+            "Concevoir un logo pour une startup technologique futuriste.",
+            "Dessiner une couverture de livre sur le thème de l'aventure.",
+            "Imaginer une collection de mode écoresponsable pour l'été.",
+            "Créer une interface utilisateur pour une application de méditation.",
+            "Designer une série de cartes postales vintage sur une ville célèbre.",
+            "Illustrer un set d'icônes pour une application de cuisine.",
+            "Créer un packaging innovant pour un produit de beauté bio.",
+            "Concevoir une animation 2D pour une campagne publicitaire.",
+            "Réaliser un moodboard pour un projet de décoration intérieure.",
+            "Créer un poster inspiré par la culture pop des années 80.",
+            "Dessiner une typographie personnalisée pour une marque de vêtements.",
+            "Créer un jardin vertical en utilisant des matériaux recyclés.",
+            "Concevoir une application mobile pour suivre ses habitudes de lecture.",
+            "Illustrer une série de tatouages minimalistes inspirés par la nature.",
+            "Imaginer un projet d'art urbain qui transforme des murs de la ville.",
+            "Créer une série de portraits abstraits en utilisant des couleurs vives.",
+            "Dessiner une collection de mode futuriste avec des matériaux intelligents.",
+            "Créer une installation lumineuse interactive dans un espace public.",
+            "Illustrer un livre pour enfants avec des personnages fantastiques.",
+            "Imaginer une application de réalité augmentée pour le tourisme.",
+            "Concevoir un projet de mobilier modulable pour les petits espaces.",
+            "Créer un calendrier artistique avec des illustrations mensuelles uniques.",
+            "Réaliser un design sonore pour une application de relaxation.",
+            "Imaginer un projet de décoration intérieure pour un café conceptuel.",
+            "Créer un magazine en ligne sur le design durable.",
+            "Dessiner une fresque murale collaborative avec la communauté locale.",
+            "Concevoir une série de cartes de visite créatives pour des artistes.",
+            "Créer une application de fitness avec des illustrations motivantes.",
+            "Imaginer une nouvelle typographie pour un journal indépendant.",
+            "Concevoir un packaging innovant pour un produit alimentaire écologique.",
+            "Créer une série de peintures abstraites inspirées par la musique.",
+            "Réaliser une campagne publicitaire pour une marque de mode locale.",
+            "Imaginer une nouvelle identité visuelle pour une galerie d'art.",
+            "Créer un album photo thématique sur les paysages urbains.",
+            "Concevoir une application de gestion de projet pour les créatifs.",
+            "Créer un jeu de société éducatif avec des illustrations originales.",
+            "Imaginer un projet d'art interactif utilisant des capteurs de mouvement.",
+            "Concevoir une ligne de vêtements inspirée par des cultures du monde.",
+            "Créer une série de vidéos tutoriels sur des techniques artistiques.",
+            "Réaliser une campagne de sensibilisation sur la protection de l'eau.",
+            "Imaginer une installation artistique sonore dans un parc.",
+            "Créer un projet de photographie explorant le thème de la solitude.",
+            "Concevoir une application de cuisine avec des recettes illustrées.",
+            "Créer une bande dessinée sur une aventure dans l'espace.",
+            "Imaginer une série de meubles inspirés par la nature.",
+            "Concevoir une affiche pour un festival de cinéma indépendant.",
+            "Créer une série de podcasts sur l'histoire de l'art.",
+            "Réaliser un projet d'art textile utilisant des motifs traditionnels.",
+            "Imaginer une application pour apprendre une nouvelle langue avec des jeux.",
+            "Concevoir une série de bijoux minimalistes avec des matériaux naturels.",
+            "Créer un documentaire photographique sur les artisans locaux.",
+            "Réaliser une animation expliquant un concept scientifique complexe.",
+            "Imaginer une installation artistique sur le thème de l'intelligence artificielle.",
+            "Créer un jeu mobile éducatif pour les enfants.",
+            "Concevoir une application de suivi de l'humeur avec des visualisations.",
+            "Créer une série de peintures murales pour embellir une école.",
+            "Imaginer une application de réalité virtuelle pour visiter des musées.",
+            "Concevoir une ligne de papeterie avec des motifs botaniques.",
+            "Créer un projet d'art participatif autour du thème de la communauté.",
+            "Réaliser une série de vidéos sur des techniques artisanales traditionnelles.",
+            "Imaginer une campagne de sensibilisation sur les énergies renouvelables.",
+            "Créer une collection de mode inspirée par les années 70.",
+            "Concevoir une application pour suivre ses objectifs personnels avec des graphiques.",
+            "Créer un projet de photographie explorant les contrastes entre nature et technologie.",
+            "Réaliser une série de podcasts sur des artistes émergents.",
+            "Imaginer une nouvelle identité visuelle pour une ONG.",
+            "Créer un design sonore pour une installation artistique immersive.",
+            "Concevoir un site web interactif pour une bibliothèque numérique.",
+            "Créer une application de méditation avec des paysages sonores personnalisés.",
+            "Imaginer une série de jeux éducatifs pour apprendre les sciences.",
+            "Concevoir une série de posters sur les grands moments de l'histoire.",
+            "Créer un projet d'art numérique explorant le thème de l'identité.",
+            "Réaliser une campagne de marketing pour une startup écologique.",
+            "Imaginer une application mobile pour découvrir des lieux insolites.",
+            "Créer une série de vidéos sur des histoires inspirantes.",
+            "Concevoir une installation artistique utilisant des miroirs et des lumières.",
+            "Créer une bande dessinée sur la vie quotidienne dans une grande ville.",
+            "Imaginer une application de suivi de la consommation d'énergie.",
+            "Concevoir une série de cartes postales illustrées sur les merveilles naturelles.",
+            "Créer un documentaire sur les innovations en design durable.",
+            "Réaliser une série de photographies sur le thème de la diversité culturelle.",
+            "Imaginer une installation artistique dans un espace de coworking.",
+            "Créer une application de gestion du temps pour les étudiants.",
+            "Concevoir une collection de mode inspirée par les années 90.",
+            "Créer un projet d'art collaboratif sur le thème de l'espoir.",
+            "Réaliser une série de vidéos sur des artisans et leur savoir-faire.",
+            "Imaginer une application pour organiser des événements communautaires.",
+            "Créer une série de peintures explorant le thème de l'architecture.",
+            "Concevoir un projet de design d'intérieur pour un espace de bien-être.",
+            "Créer une application de fitness avec des animations motivantes.",
+            "Imaginer une installation artistique utilisant des projections lumineuses.",
+            "Concevoir une série de posters sur les innovations technologiques.",
+            "Créer un jeu de société éducatif sur les écosystèmes.",
+            "Réaliser un projet de photographie explorant les contrastes entre rural et urbain.",
+            "Imaginer une application pour apprendre l'histoire de l'art avec des quiz.",
+            "Concevoir une série de bijoux inspirés par les formes géométriques.",
+            "Créer une série de vidéos sur des destinations de voyage insolites.",
+            "Réaliser une installation artistique sur le thème de l'eau et de la nature.",
+            "Imaginer une application de gestion de budget avec des visualisations.",
+            "Créer une collection de mode inspirée par les motifs ethniques.",
+            "Concevoir une série de peintures murales pour un hôpital.",
+            "Créer une application de méditation avec des illustrations apaisantes.",
+            "Imaginer une campagne de sensibilisation sur la biodiversité.",
+            "Concevoir un site web interactif pour une galerie d'art.",
+            "Créer une série de podcasts sur des innovations en design.",
+            "Réaliser une série de vidéos documentaires sur des innovations locales.",
+            "Imaginer un projet de photographie explorant le thème de l'intimité.",
+            "Créer un design d'intérieur pour une maison écologique.",
+            "Concevoir une série de tableaux inspirés par les émotions humaines.",
+            "Créer une application éducative sur les énergies renouvelables.",
+            "Imaginer une série de sculptures interactives pour un parc public.",
+            "Concevoir un projet de design graphique pour un musée historique.",
+            "Créer une installation artistique immersive sur le thème des rêves.",
+            "Imaginer une campagne publicitaire pour promouvoir la lecture.",
+            "Créer une série de peintures numériques sur les paysages futuristes.",
+            "Concevoir une série de vêtements inspirés par les constellations.",
+            "Créer une application mobile pour explorer la cuisine mondiale.",
+            "Imaginer un projet d'art public sur l'importance de la biodiversité.",
+            "Concevoir une série d'affiches sur les grands penseurs de l'histoire.",
+            "Créer un jeu vidéo éducatif sur les écosystèmes marins.",
+            "Imaginer une application de gestion de jardin avec des conseils illustrés.",
+            "Créer une collection de mode inspirée par l'architecture contemporaine.",
+            "Concevoir une série de meubles modulaires pour les petits espaces.",
+            "Créer un projet d'art interactif sur le thème de la connexion humaine.",
+            "Imaginer une campagne de sensibilisation sur la réduction des déchets.",
+            "Concevoir un design sonore pour une installation artistique aquatique.",
+            "Créer une série de vidéos sur des histoires de succès inspirantes.",
+            "Imaginer un projet de photographie explorant le thème de la métamorphose.",
+            "Concevoir une application pour apprendre les techniques de dessin.",
+            "Créer une série de sculptures en papier mâché sur le thème de l'eau.",
+            "Imaginer une installation artistique utilisant des illusions optiques.",
+            "Concevoir une application de réalité augmentée pour la découverte de la faune locale.",
+            "Créer une collection de vêtements inspirée par les motifs floraux.",
+            "Imaginer un projet d'art urbain sur le thème de la diversité culturelle.",
+            "Concevoir une série de peintures murales pour un espace de coworking.",
+            "Créer une application de suivi des activités sportives avec des illustrations dynamiques.",
+            "Imaginer une installation artistique sur le thème de l'espace et du temps.",
+            "Concevoir une série de posters sur les innovations en santé publique.",
+            "Créer un projet de photographie explorant le thème de la lumière et de l'ombre.",
+            "Imaginer une application éducative sur l'histoire des inventions.",
+            "Concevoir une série de bijoux inspirés par les formes naturelles.",
+            "Créer une série de vidéos sur des voyages culturels à travers le monde.",
+            "Réaliser une installation artistique sonore dans un parc naturel.",
+            "Imaginer une application de gestion des habitudes de vie avec des visualisations inspirantes.",
+            "Créer une collection de mode inspirée par les tissus traditionnels.",
+            "Concevoir une série de peintures murales pour une école primaire.",
+            "Créer une application de méditation avec des animations apaisantes.",
+            "Imaginer une campagne de sensibilisation sur l'importance des abeilles.",
+            "Concevoir un site web interactif pour une organisation de conservation de la nature.",
+            "Créer une série de podcasts sur des artistes et designers influents.",
+            "Réaliser une série de vidéos sur des innovations en éducation.",
+            "Imaginer un projet de photographie explorant le thème de la liberté.",
+            "Créer un design d'intérieur pour une maison zéro déchet.",
+            "Concevoir une série de tableaux inspirés par les éléments de la nature.",
+            "Créer une application éducative sur les énergies renouvelables.",
+            "Imaginer une série de sculptures interactives pour un parc public.",
+            "Concevoir un projet de design graphique pour un musée historique.",
+            "Créer une installation artistique immersive sur le thème des rêves.",
+            "Imaginer une campagne publicitaire pour promouvoir la lecture.",
+            "Créer une série de peintures numériques sur les paysages futuristes.",
+            "Concevoir une série de vêtements inspirés par les constellations.",
+            "Créer une application mobile pour explorer la cuisine mondiale.",
+            "Imaginer un projet d'art public sur l'importance de la biodiversité.",
+            "Concevoir une série d'affiches sur les grands penseurs de l'histoire.",
+            "Créer un jeu vidéo éducatif sur les écosystèmes marins.",
+            "Imaginer une application de gestion de jardin avec des conseils illustrés.",
+            "Créer une collection de mode inspirée par l'architecture contemporaine.",
+            "Concevoir une série de meubles modulaires pour les petits espaces.",
+            "Créer un projet d'art interactif sur le thème de la connexion humaine.",
+            "Imaginer une campagne de sensibilisation sur la réduction des déchets.",
+            "Concevoir une application de réalité augmentée pour la découverte de la faune locale.",
+            "Créer une collection de vêtements inspirée par les motifs floraux.",
+            "Imaginer un projet d'art urbain sur le thème de la diversité culturelle.",
+          
+    ];
+
+        function generateIdea() {
+            const randomIndex = Math.floor(Math.random() * ideas.length);
+            document.getElementById('idea').innerText = ideas[randomIndex];
+        }
+    </script>
+</body>
+</html>
